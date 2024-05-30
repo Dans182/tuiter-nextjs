@@ -17,7 +17,13 @@ export default function Timeline({userName}) {
 }
 
 Timeline.getInitialProps = () => {
-    return {userName: '@Dans182'}
+    return fetch("/api/hello")
+    .then(res => res.json())
+    .then(response => {
+        console.log(response)
+        const {userName} = response
+        return {userName}
+    })
 }
 //aca le estamos pasando las props que va a recibir el componente
-//Este metodo se esta ejecutando en el servidor Y lo que hace es ejecutarlo antes de renderizarlo.
+//Este metodo se esta ejecutando en el servidor Y lo que hace es ejecutarlo antes de renderizarlo. 
