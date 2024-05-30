@@ -1,3 +1,48 @@
+
+Facilidades de NextJs:
+-  Facilidades de prerendering
+
+Se construye en el cliente la parte del cliente para funcionar. Pero con nextjs se esta renderizando previamente en el servidor para funcionar. NextJs hace un server side rendering
+Esto hace que tu codigo funciona tanto en cliente como servidor.
+
+Export de staticos como hace gatsby. Te compila la aplicación
+  bash
+
+'node -v'
+
+'npm -v'
+
+'yarn -v'
+
+'npx create-next-app' -> Comando de npm, pero la x es porque lo va a ejecutar
+
+Aca nos crea nuestra aplicación directamente con package-json en vez de yarn.
+
+La estructura de carpetas es:
+readme
+node_modules -> instalacion de las dependencias
+pages ->Nuestras páginas de la app
+public
+styles
+package.json
+package-lock.json
+
+si hago un npm run nos dice los scripts de nuestra aplicación:
+
+'npm run-dev' -> Modo desarrollo
+
+'npm run-start' -> Inicializar nuestra aplicación
+
+'npm run-build' -> Crea los estaticos para desplegar nuestra aplicación
+
+en pages/api nos crea una carpeta api. Aca se pueden crear rutas para api. Un endpoint.
+en pages/index.js -> Aca tenemos es index de nuestra app. Aca esta todo el contenido de la aplicación. El indice de nuestra app.
+en public -> Son recursos publicos. Aca subimos nuestros estaticos, svgs, png, jpg, imagenes
+en package.json -> Lo que nos ha creado y dependencias que necesitamos: react, react-dom porque son el core de next.js y nextjs.
+readme
+
+Inicializamos nuestro proyecto con 'npm run dev' para que se habilite en localhost, en puerto 3000. Automaticamente nos crea una carpeta .next que lo que hace es un build/bundle, contruye todos los estaticos del cliente y servidor. Tiene una cache que nos sirve es que cuando hagamos un cambio, se muestra ipsofacto
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
