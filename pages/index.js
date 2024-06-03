@@ -1,10 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 import Link from 'next/link' //Esto es una libreria para que sustituyamos los a href por Link y asi nuestra pagina es una SPA (single Page App) 
-
-const inter = Inter({ subsets: ["latin"] });
+import AppLayout from "@/components/AppLayout";
 
 export default function Home() {
   return (
@@ -16,16 +14,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={`${styles.main} ${inter.className}`}>
+      <AppLayout>
         <h1>
           <a href="https://nextjs.org">Tuiter</a>
         </h1>
-        <nav>
-        <Link href='/timeline'>
-          timeline
-        </Link>
-        </nav>
-      </main>
+        </AppLayout>
     </>
   );
 }
