@@ -41,13 +41,13 @@ export default function Home() {
         }
 
         h1{
-          color: ${colors.primary};
+          color: ${colors.secondary};
           font-weight: 800;
           margin-bottom: 16px;
         }
 
         h2{
-          color: ${colors.secondary};
+          color: ${colors.primary};
           font-size: 21px;
           margin: 0;
         }
