@@ -43,6 +43,11 @@ readme
 
 Inicializamos nuestro proyecto con 'npm run dev' para que se habilite en localhost, en puerto 3000. Automaticamente nos crea una carpeta .next que lo que hace es un build/bundle, contruye todos los estaticos del cliente y servidor. Tiene una cache que nos sirve es que cuando hagamos un cambio, se muestra ipsofacto
 
+----
+
+firebase.google.com
+
+Libreria de utilidades, backend as a service
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
