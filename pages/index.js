@@ -8,17 +8,18 @@ import { loginWithGitHub } from "../firebase/client";
 import { useState } from "react";
 
 export default function Home() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
   const handleClick = () => {
-    loginWithGitHub().then(user=>{
-      const {avatar, username} = user
-      setUser(user)
-      console.log(user, "############3")
-    }).catch(err => {
-      console.log(err)
-    })
-  }
+    loginWithGitHub()
+      .then((user) => {
+        const { avatar, username } = user;
+        setUser(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <Head>
@@ -30,36 +31,42 @@ export default function Home() {
 
       <AppLayout>
         <section>
-        <img src="/devter-logo.png" />
-        <h1>Devter</h1>
-        <h2>Talk about development with developers</h2>
-        
-        <div>
-        <Button onClick={handleClick}>
-          <GitHub fill="white" width={24} height={24}/>
-          Login with Github
-          </Button>
-        </div>
-        
+          <img src="/devter-logo.png" />
+          <h1>Devter</h1>
+          <h2>Talk about development with developers</h2>
+
+          <div>
+            {
+              user === null ?
+                <Button onClick={handleClick}>
+                  <GitHub fill="white" width={24} height={24} />
+                  Login with Github
+                </Button>
+                : <div>
+                  <img src={user.avatar} />
+                  <strong>{user.username}</strong>
+                </div>
+            }
+          </div>
         </section>
       </AppLayout>
 
       <style jsx>{`
-        img{
+        img {
           width: 120px;
         }
 
-        div{
+        div {
           margin-top: 16px;
         }
 
-        h1{
+        h1 {
           color: ${colors.secondary};
           font-weight: 800;
           margin-bottom: 16px;
         }
 
-        h2{
+        h2 {
           color: ${colors.primary};
           font-size: 21px;
           margin: 0;
@@ -71,7 +78,7 @@ export default function Home() {
           place-content: center;
           place-items: center;
         }
-        `}</style>
+      `}</style>
     </>
   );
 }
