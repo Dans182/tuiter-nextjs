@@ -4,11 +4,15 @@ import AppLayout from "@/components/AppLayout";
 import { colors } from "@/styles/theme";
 import Button from "@/components/Button";
 import GitHub from "@/components/Icons/GitHub";
-import { loginWithGitHub } from "../firebase/client";
-import { useState } from "react";
+import { loginWithGitHub, onAuthStateChanged } from "../firebase/client";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(undefined);
+
+  useEffect(() => {
+    onAuthStateChanged(setUser)
+  }, [])
 
   const handleClick = () => {
     loginWithGitHub()
@@ -37,15 +41,17 @@ export default function Home() {
 
           <div>
             {
-              user === null ?
-                <Button onClick={handleClick}>
-                  <GitHub fill="white" width={24} height={24} />
-                  Login with Github
-                </Button>
-                : <div>
-                  <img src={user.avatar} />
-                  <strong>{user.username}</strong>
-                </div>
+              user === null &&
+              <Button onClick={handleClick}>
+                <GitHub fill="white" width={24} height={24} />
+                Login with Github
+              </Button>
+            }
+            {
+              user && user.avatar && <div>
+                <img src={user.avatar} />
+                <strong>{user.username}</strong>
+              </div>
             }
           </div>
         </section>

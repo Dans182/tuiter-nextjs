@@ -18,8 +18,10 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const mapUserFromFirebaseAuth = (result) => {
-  const { user } = result;
+const mapUserFromFirebaseAuth = (user) => {
+  if (!user) {
+    return null
+  }
   const { reloadUserInfo } = user;
   const { screenName, photoUrl } = reloadUserInfo;
 
@@ -31,7 +33,7 @@ const mapUserFromFirebaseAuth = (result) => {
 
 export const onAuthStateChanged = (onChange) => {
   //funcion que se ejecutara cuando cambie si el usuario pasa de estar autentificado
-  return auth()
+  return auth
   .onAuthStateChanged((user) => {
     const normalizedUser = mapUserFromFirebaseAuth(user)
     onChange(normalizedUser)
@@ -40,12 +42,7 @@ export const onAuthStateChanged = (onChange) => {
 
 export const loginWithGitHub = () => {
   const githubProvider = new GithubAuthProvider(); //creamos instancia de githubprovider
-  return signInWithPopup(auth, githubProvider).then((result) => {
-    return mapUserFromFirebaseAuth(result);
-}).catch((error) => {
-  console.error("Error during sign in with GitHub: ", error);
-  throw error;
-});
+  return signInWithPopup(auth, githubProvider);
 };
 
 
