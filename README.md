@@ -53,6 +53,8 @@ Libreria de utilidades, backend as a service
 
 ---
 
+Prettier es un formateador de codigo.
+
 npx prettier . --check
 
 npx prettier . -write -> arreglar los errores que detecte prettier
