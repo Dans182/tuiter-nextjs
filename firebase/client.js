@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -16,11 +15,10 @@ const firebaseConfig = {
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
 
 const mapUserFromFirebaseAuth = (user) => {
   if (!user) {
-    return null
+    return null;
   }
   const { reloadUserInfo } = user;
   const { screenName, photoUrl } = reloadUserInfo;
@@ -33,10 +31,9 @@ const mapUserFromFirebaseAuth = (user) => {
 
 export const onAuthStateChanged = (onChange) => {
   //funcion que se ejecutara cuando cambie si el usuario pasa de estar autentificado
-  return auth
-  .onAuthStateChanged((user) => {
-    const normalizedUser = mapUserFromFirebaseAuth(user)
-    onChange(normalizedUser)
+  return auth.onAuthStateChanged((user) => {
+    const normalizedUser = mapUserFromFirebaseAuth(user);
+    onChange(normalizedUser);
   });
 };
 
@@ -44,22 +41,3 @@ export const loginWithGitHub = () => {
   const githubProvider = new GithubAuthProvider(); //creamos instancia de githubprovider
   return signInWithPopup(auth, githubProvider);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

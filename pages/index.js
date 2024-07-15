@@ -1,5 +1,6 @@
+import React from "react";
 import Head from "next/head";
-import Link from "next/link"; //Esto es una libreria para que sustituyamos los a href por Link y asi nuestra pagina es una SPA (single Page App)
+//import Link from "next/link"; //Esto es una libreria para que sustituyamos los a href por Link y asi nuestra pagina es una SPA (single Page App)
 import AppLayout from "@/components/AppLayout";
 import { colors } from "@/styles/theme";
 import Button from "@/components/Button";
@@ -11,8 +12,8 @@ export default function Home() {
   const [user, setUser] = useState(undefined);
 
   useEffect(() => {
-    onAuthStateChanged(setUser)
-  }, [])
+    onAuthStateChanged(setUser);
+  }, []);
 
   const handleClick = () => {
     loginWithGitHub()
@@ -40,19 +41,18 @@ export default function Home() {
           <h2>Talk about development with developers</h2>
 
           <div>
-            {
-              user === null &&
+            {user === null && (
               <Button onClick={handleClick}>
                 <GitHub fill="white" width={24} height={24} />
                 Login with Github
               </Button>
-            }
-            {
-              user && user.avatar && <div>
+            )}
+            {user && user.avatar && (
+              <div>
                 <img src={user.avatar} />
                 <strong>{user.username}</strong>
               </div>
-            }
+            )}
           </div>
         </section>
       </AppLayout>
