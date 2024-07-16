@@ -8,6 +8,7 @@ import GitHub from "@/components/Icons/GitHub";
 import { loginWithGitHub, onAuthStateChanged } from "../firebase/client";
 import { useEffect, useState } from "react";
 import Avatar from "@/components/Avatar";
+import Logo from "@/components/Icons/Logo";
 
 export default function Home() {
   const [user, setUser] = useState(undefined);
@@ -37,7 +38,7 @@ export default function Home() {
 
       <AppLayout>
         <section>
-          <img src="/devter-logo.png" />
+          <Logo width="100" />
           <h1>Devter</h1>
           <h2>Talk about development with developers</h2>
 
@@ -71,13 +72,14 @@ export default function Home() {
         }
 
         h1 {
-          color: ${colors.secondary};
+          color: ${colors.primary};
           font-weight: 800;
+          font-size: 32px;
           margin-bottom: 16px;
         }
 
         h2 {
-          color: ${colors.primary};
+          color: ${colors.secondary};
           font-size: 21px;
           margin: 0;
         }

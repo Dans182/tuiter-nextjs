@@ -32,7 +32,7 @@ const mapUserFromFirebaseAuth = (user) => {
 export const onAuthStateChanged = (onChange) => {
   //funcion que se ejecutara cuando cambie si el usuario pasa de estar autentificado
   return auth.onAuthStateChanged((user) => {
-    const normalizedUser = mapUserFromFirebaseAuth(user);
+    const normalizedUser = user ? mapUserFromFirebaseAuth(user) : null;
     onChange(normalizedUser);
   });
 };
